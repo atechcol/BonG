@@ -5,5 +5,18 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="BonG.UI.MainWindow"
         Title="BonG">
-    Welcome to Avalonia!
+
+    <StackPanel>
+        <TextBlock Padding="10" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center">BonG</TextBlock>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" >Joj</TextBlock>
+            <TextBlock Grid.Column="1">Joj</TextBlock>
+            <TextBlock Grid.Column="2">Joj</TextBlock>
+        </Grid>
+    </StackPanel>
 </Window>
