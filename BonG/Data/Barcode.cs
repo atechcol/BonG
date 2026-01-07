@@ -6,15 +6,22 @@ using System.Threading.Tasks;
 namespace BonG.Data
 {
 
-    public abstract class Barcode(byte Indicator, int CompanyItem, byte CheckDigit)
+    public abstract class Barcode(string Indicator, string CompanyItem, string CheckDigit)
     {
-        public byte Indicator {get; set; } = Indicator;
-        public int CompanyItem {get; set; } = CompanyItem;
-        public byte CheckDigit {get; set; } = CheckDigit;
 
-        protected int[] indicatorArray = [.. Indicator.ToString().Select(o => Convert.ToInt32(o) - 48)];
-        protected int[] companyItemArray = [.. CompanyItem.ToString().Select(o => Convert.ToInt32(o) - 48)];
-        protected int[] checkDigitArray = [.. CheckDigit.ToString().Select(o => Convert.ToInt32(o) - 48)];
+        public string Indicator { get; set; } = Indicator;
+        public string CompanyItem { get; set; } = CompanyItem;
+        public string CheckDigit { get; set; } = CheckDigit;
+
+        public byte CheckDigitByte => Convert.ToByte(this.CheckDigit);
+
+        public Barcode(byte indicator, long companyItem, byte checkDigit) : this(
+            indicator.ToString(),
+            companyItem.ToString(),
+            checkDigit.ToString())
+        {
+
+        }
 
         public abstract int GetManufacturerCode();
         public abstract int GetItemCode();
@@ -30,30 +37,30 @@ namespace BonG.Data
     /// <returns></returns>
     public class GTIN13Barcode : Barcode
     {
-        public GTIN13Barcode(int companyItem, byte checkDigit) : base(0, companyItem, checkDigit)
+        public GTIN13Barcode(string companyItem, string checkDigit) : base("0", companyItem, checkDigit)
         {
         }
+
+        // https://en.wikipedia.org/wiki/Check_digit#UPC,_EAN,_GLN,_GTIN,_numbers_administered_by_GS1
         public override bool Check()
         {
-            int result = 0;
-            int remainder = 0;
+            long result = 0;
 
             // Odd sum
             for (int i = 0; i < 11; i += 2)
             {
-                result += this.companyItemArray[i];
+                result += long.Parse([this.CompanyItem[i]]);
             }
             result *= 3;
 
             // Even sum
             for (int i = 1; i < 11; i += 2)
             {
-                result += this.companyItemArray[i];
+                result += long.Parse([this.CompanyItem[i]]);
             }
 
-            remainder = (result % 10) == 0 ? 0 : 10 - (result % 10);
-
-            return remainder == this.CheckDigit;
+            long remainder = (result % 10) == 0 ? 0 : 10 - (result % 10);
+            return remainder == this.CheckDigitByte;
 
         }
         public override int GetManufacturerCode()
