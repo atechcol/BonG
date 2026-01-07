@@ -14,8 +14,34 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" >Joj</TextBlock>
-            <TextBlock Grid.Column="1">Joj</TextBlock>
+            <StackPanel>
+                <TextBlock Margin="10, 0">Log</TextBlock>
+                <TextBlock 
+                    Grid.Column="0" 
+                    FontSize="10"
+                    FontFamily="monospace"
+                    Background="LightGray"
+                    Padding="5"
+                    Margin="10"
+                    TextWrapping="Wrap">
+                    </TextBlock>
+            </StackPanel>
+            <TextBlock Grid.Column="1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Width="*"/>
+                        <RowDefinition Width="*"/>
+                        <RowDefinition Width="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Button Grid.Column="1" Grid.Row="1">1</Button>
+                </Grid>
+            </TextBlock>
             <TextBlock Grid.Column="2">Joj</TextBlock>
         </Grid>
     </StackPanel>
