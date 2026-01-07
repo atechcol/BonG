@@ -83,7 +83,7 @@ public class YamlManager {
 
     public static void GenerateYamlFile(string yaml)
     {
-       string path = @"product.yaml";
+       string path = @"product.yaml"; // Sti til .yaml fil (SKAL ÆNDRES!!)
        File.WriteAllText(path, yaml, Encoding.UTF8);
     }
 
