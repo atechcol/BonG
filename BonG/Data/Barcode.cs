@@ -8,9 +8,9 @@ namespace BonG.Data
 
     public abstract class Barcode(byte Indicator, int CompanyItem, byte CheckDigit)
     {
-        public byte Indicator = Indicator;
-        public int CompanyItem = CompanyItem;
-        public byte CheckDigit = CheckDigit;
+        public byte Indicator {get; set; } = Indicator;
+        public int CompanyItem {get; set; } = CompanyItem;
+        public byte CheckDigit {get; set; } = CheckDigit;
 
         protected int[] indicatorArray = [.. Indicator.ToString().Select(o => Convert.ToInt32(o) - 48)];
         protected int[] companyItemArray = [.. CompanyItem.ToString().Select(o => Convert.ToInt32(o) - 48)];
@@ -30,7 +30,7 @@ namespace BonG.Data
     /// <returns></returns>
     public class GTIN13Barcode : Barcode
     {
-        public GTIN13Barcode(int companyItem, int checkDigit) : base(0, companyItem, checkDigit)
+        public GTIN13Barcode(int companyItem, byte checkDigit) : base(0, companyItem, checkDigit)
         {
         }
         public override bool Check()
