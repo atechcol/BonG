@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BonG.Data
 {
-    public record Purchase(DateTime Timestamp, PurchasedProduct[] Products, float Total)
+    public record Purchase(DateTime Timestamp, IEnumerable<PurchasedProduct> Products, float Total)
     {
      
     }

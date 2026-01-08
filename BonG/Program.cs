@@ -14,7 +14,7 @@ class Program
     public static void Main(string[] args)
     {
         Console.WriteLine("HALLO!=!=");
-        YamlManager.SerializeProduct();
+        YamlManager.Start();
         //  BuildAvaloniaApp()
         // .StartWithClassicDesktopLifetime(args);
     }
