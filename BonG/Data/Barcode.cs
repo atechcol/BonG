@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using YamlDotNet.Serialization;
 
 namespace BonG.Data
 {
@@ -13,9 +14,10 @@ namespace BonG.Data
         public string CompanyItem { get; set; } = CompanyItem;
         public string CheckDigit { get; set; } = CheckDigit;
 
-        public byte CheckDigitByte => Convert.ToByte(this.CheckDigit);
+        [YamlIgnore]
+        public long CheckDigitLong => Convert.ToInt64(this.CheckDigit);
 
-        public Barcode(byte indicator, long companyItem, byte checkDigit) : this(
+        public Barcode(long indicator, long companyItem, long checkDigit) : this(
             indicator.ToString(),
             companyItem.ToString(),
             checkDigit.ToString())
@@ -60,7 +62,7 @@ namespace BonG.Data
             }
 
             long remainder = (result % 10) == 0 ? 0 : 10 - (result % 10);
-            return remainder == this.CheckDigitByte;
+            return remainder == this.CheckDigitLong;
 
         }
         public override int GetManufacturerCode()

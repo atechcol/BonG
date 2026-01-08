@@ -6,7 +6,7 @@
         x:Class="BonG.UI.MainWindow"
         Title="BonG">
 
-    <StackPanel>
+    <!-- <StackPanel>
         <TextBlock Padding="10" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center">BonG</TextBlock>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -44,5 +44,5 @@
             </TextBlock>
             <TextBlock Grid.Column="2">Joj</TextBlock>
         </Grid>
-    </StackPanel>
+    </StackPanel> -->
 </Window>
