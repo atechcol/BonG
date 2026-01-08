@@ -13,10 +13,8 @@ class Program
     [STAThread]
     public static void Main(string[] args)
     {
-        Console.WriteLine("HALLO!=!=");
-        YamlManager.Start();
-        //  BuildAvaloniaApp()
-        // .StartWithClassicDesktopLifetime(args);
+        BuildAvaloniaApp()
+        .StartWithClassicDesktopLifetime(args);
     }
 
     // Avalonia configuration, don't remove; also used by visual designer.
