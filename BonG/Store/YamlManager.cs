@@ -72,7 +72,7 @@ public class YamlManager
     {
         SerializeProduct();
         // Virker ikke :(
-        //DeSerializeProduct(@"C:\Users\Ps2Ch\Documents\GitHub\BonG\BonG\bin\Debug\net9.0\product.yaml");
+        //DeSerializeProduct();
     }
 
     public static void GenerateYamlFile(string yaml)
