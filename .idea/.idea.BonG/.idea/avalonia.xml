@@ -3,6 +3,7 @@
   <component name="AvaloniaProject">
     <option name="projectPerEditor">
       <map>
+        <entry key="BonG/UI/App.axaml" value="BonG/BonG.csproj" />
         <entry key="BonG/UI/MainWindow.axaml" value="BonG/BonG.csproj" />
       </map>
     </option>

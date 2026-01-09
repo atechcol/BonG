@@ -13,6 +13,7 @@ class Program
     [STAThread]
     public static void Main(string[] args)
     {
+        YamlManager.Start();
         BuildAvaloniaApp()
         .StartWithClassicDesktopLifetime(args);
     }

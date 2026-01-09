@@ -32,11 +32,11 @@ public class YamlManager
         // 5: Beregn checkdigit
         // er rest 0? Nej, så 10 - 4 = 6 (hvis rest var 0 så bare 0)
 
-        Product testPrut1 = new("John Brunvin", 321, barcode);
-        Product testPrut2 = new("Børge Lyserødvin", 123, barcode2);
+        Product testProduct1 = new("Rødvin", 321, barcode);
+        Product testProduct2 = new("Hvidvin", 123, barcode2);
 
-        PurchasedProduct product1 = new(testPrut1, 1);
-        PurchasedProduct product2 = new(testPrut2, 1);
+        PurchasedProduct product1 = new(testProduct1, 1);
+        PurchasedProduct product2 = new(testProduct2, 1);
 
         Purchase purchase = new(DateTime.Now, [product1, product2], 444);
         Purchase purchase2 = new(DateTime.Now, [product1], 321);
@@ -47,7 +47,7 @@ public class YamlManager
             .Build();
 
         var yaml = serializer.Serialize(purchase);
-        //Console.WriteLine("Yaml gaming: " + yaml);
+        //Console.WriteLine("Yaml test: " + yaml);
         GenerateYamlFile(yaml);
     }
 
@@ -77,7 +77,7 @@ public class YamlManager
 
     public static void GenerateYamlFile(string yaml)
     {
-        string path = @"product.yaml"; // Sti til .yaml fil (XXX SKAL ÆNDRES!! XXX)
+        string path = @"product.yaml"; // Sti til .yaml fil (/bin/debug/net9.0)
         File.AppendAllText(path, yaml + Environment.NewLine, Encoding.UTF8);
     }
 
